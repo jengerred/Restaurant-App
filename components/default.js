@@ -24,6 +24,7 @@ export default Page =>
       };
     }
 
+
     logout = eve => {
       if (eve.key === "logout") {
         Router.push(`/?logout=${eve.newValue}`);
@@ -41,4 +42,5 @@ export default Page =>
     render() {
       return <Page {...this.props} />;
     }
+   
   };

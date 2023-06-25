@@ -18,7 +18,7 @@ function Home() {
     return (
         <ApolloProvider client={client}>
           <div className="search">
-              <h2 style={{margin: "20px"}}> Local Restaurants</h2>
+              <h1 style={{margin: "20px"}}> Local Restaurants</h1>
                 <InputGroup >
                 <InputGroupAddon addonType="append"> Search </InputGroupAddon>
                 <Input

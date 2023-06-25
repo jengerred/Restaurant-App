@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import { Button, Card, CardBody, CardTitle, Badge } from "reactstrap";
 import AppContext from "./context"
+import AnchorLink from "react-anchor-link-smooth-scroll";
 import Link from "next/link"
 // we can pass cart data in via props method 
 // the alternative is using useContext as below
@@ -24,7 +25,7 @@ function Cart() {
           if (item.quantity > 0) {
             return (
               <div
-                className="items-one"
+              className="items-one"
                 style={{ marginBottom: 15 }}
                 key={item.id}
               >
@@ -33,7 +34,7 @@ function Cart() {
                   <span id="item-name">&nbsp; {item.name}</span>
                 </div>
                 <div>
-                  <Button
+                <AnchorLink href='#cart'> <Button
                     style={{
                       height: 25,
                       padding: 0,
@@ -42,11 +43,13 @@ function Cart() {
                       marginLeft: 10,
                     }}
                     onClick={() => addItem(item)}
-                    color="link"
+                    color="info"
                   >
                     +
                   </Button>
-                  <Button
+                  </AnchorLink>
+                  <AnchorLink href='#cart'><Button
+                  id="cart"
                     style={{
                       height: 25,
                       padding: 0,
@@ -54,10 +57,11 @@ function Cart() {
                       marginRight: 10,
                     }}
                     onClick={() => removeItem(item)}
-                    color="link"
+                    color="info"
                   >
                     -
                   </Button>
+                  </AnchorLink>
                   <span style={{ marginLeft: 5 }} id="item-quantity">
                     {item.quantity}x
                   </span>
@@ -79,19 +83,21 @@ const checkoutItems = ()=>{
         <h5 style={{ fontWeight: 100, color: "gray" }}>Total:</h5>
         <h3>${cart.total}</h3>
       </Badge>
+      <div style={{marginTop: "10px"}}>
           <Link href="/checkout/">
-            <Button style={{ width: "60%" }} color="primary">
-              <a>Order</a>
+            <Button style={{ width: "60%" }} color="info">
+              <a>ORDER</a>
             </Button>
           </Link>
+          </div>
     </div>
   )}
 
 // return Cart
   return (
     <div>
-      <h1> Cart</h1>
-      <Card style={{ padding: "10px 5px" }} className="cart">
+      <Card className="shadow" style={{ padding: "10px 5px",  maxWidth: "240px" }} >
+      <h1 style={{textAlign:"center"}}> Cart</h1>
         <CardTitle style={{ margin: 10 }}>Your Order:</CardTitle>
         <hr />
         <CardBody style={{ padding: 10 }}>

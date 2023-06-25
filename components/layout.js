@@ -4,10 +4,21 @@ import Head from "next/head";
 import Link from "next/link";
 import { Container, Nav, NavItem } from "reactstrap";
 import AppContext from "./context";
+//import { logout } from "../components/auth";
+//import {withAuthSync} from "../components/auth";
 
 const Layout = (props) => {
-const title = "Welcome to Nextjs";
+  const title = "Welcome to Nextjs";
 const {user} = useContext(AppContext);
+
+
+/*
+const logout = () => {
+  setUser(false);
+  setIsAuthenticated(false);
+}
+
+*/
 
   return (
     <div>
@@ -44,7 +55,7 @@ const {user} = useContext(AppContext);
 
           <NavItem className="ml-auto">
             {user ? (
-              <h5>{user.username}</h5>
+              <h5>({user.username})</h5>
             ) : (
               <Link href="/register">
                 <a className="nav-link"> Sign up</a>
@@ -82,3 +93,6 @@ export default Layout;
 
 
 
+/*
+
+*/

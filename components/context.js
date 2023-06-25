@@ -1,5 +1,23 @@
-/* /context/AppContext.js */
+import React from "react";
+import { createContext } from "react";
 
+const AppContext = createContext(
+    {isAuthenticated:false, 
+        cart: {
+            items:[], 
+            total:0},
+
+        addItem:()=>{},
+        removeItem:()=>{},
+
+        user:false, 
+        setUser:()=>{},
+    });
+
+    export default AppContext;
+
+/* /context/AppContext.js */
+/*
 import React from "react";
 // create auth context with default value
 
@@ -13,9 +31,9 @@ const AppContext = React.createContext(
         user:false, 
         setUser:()=>{}
     });
-   
+  
 export default AppContext;
-
+*/
 // /* /context/AppContext.js */
 
 // import React from "react";
@@ -31,6 +49,10 @@ export default AppContext;
 //   setUser: () => {},
 // });
 // export default AppContext;
+
+
+
+
 /*
 import { createContext, useState } from "react";
 

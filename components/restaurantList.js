@@ -1,7 +1,8 @@
 import {gql,useQuery} from '@apollo/client';
 import Dishes from "./dishes"
 import {useContext, useState} from 'react';
-import Link from "next/link"
+import Link from "next/link";
+import AnchorLink from "react-anchor-link-smooth-scroll";
 
 
 import AppContext from "./context"
@@ -47,12 +48,12 @@ let restId = searchQuery[0].id
  
 // definet renderer for Dishes
   const renderDishes = (restaurantID) => {
-    return ( <Dishes restId={restaurantID}> </Dishes>)
+    return ( <Dishes restId={restaurantID}></Dishes> )
   };
 if(searchQuery.length > 0){
   const restList = searchQuery.map((res) => (
-    <Col xs="6" sm="4" key={res.id}>
-      <Card style={{ margin: "0 0.5rem 20px 0.5rem", minHeight: "450px" }}>
+    <Col xs="6" sm="4" key={res.id} style={{marginTop: "2rem"}}>
+      <Card className="cards" style={{ margin: "0rem .5rem 20px 0.5rem", height: "100%"}} >
         <CardImg
           top={true}
           style={{ height: 200 }}
@@ -66,7 +67,10 @@ if(searchQuery.length > 0){
         </CardBody>
 
         <div className="card-footer">
-        <Button color="info" onClick={()=> setRestaurantID(res.id)}>View Specials</Button>
+        <AnchorLink href='#dishes'> <Button color="info"  onClick={()=> setRestaurantID(res.id)} > 
+                View Specials
+              </Button>
+              </AnchorLink> 
         </div>
         
       </Card>
@@ -82,14 +86,21 @@ if(searchQuery.length > 0){
       {restList}
     </Row>
   
-    <Row xs='3'>
+
+  <br/><br/>
+  <hr></hr>
+  <br/><br/>
+
+
+    <Row  xs='3' style={{marginTop: "1rem"}}>
     {renderDishes(restaurantID)}
     </Row>
 
+    <Row id="dishes">
     <Link href="/menu">Menu</Link>
-
+    </Row>
     </Container>
- 
+    
   )
 } else {
   return <h1> No Restaurants Found</h1>
@@ -97,7 +108,11 @@ if(searchQuery.length > 0){
 }
    export default RestaurantList
 
-
+/*
+ <Button color="info"  onClick={()=> setRestaurantID(res.id)} href="/menu" >   
+                View Specials
+              </Button>
+*/
 /*
 import {gql,useQuery} from '@apollo/client';
 import Dishes from "./dishes"

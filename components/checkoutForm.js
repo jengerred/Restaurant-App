@@ -39,9 +39,11 @@ function CheckoutForm() {
 
     const token = await stripe.createToken(cardElement);
     const userToken = Cookies.get("token");
+
     const response = await fetch(`${API_URL}/orders`, {
       method: "POST",
       headers: userToken && { Authorization: `Bearer ${userToken}` },
+
       body: JSON.stringify({
         amount: Number(Math.round(appContext.cart.total + "e2") + "e-2"),
         dishes: appContext.cart.items,
@@ -49,6 +51,7 @@ function CheckoutForm() {
         city: data.city,
         state: data.state,
         token: token.token.id,
+      
       }),
     });
 
@@ -59,9 +62,9 @@ function CheckoutForm() {
 
     // OTHER stripe methods you can use depending on app
     // // or createPaymentMethod - https://stripe.com/docs/js/payment_intents/create_payment_method
-    // stripe.createPaymentMethod({
-    //   type: "card",
-    //   card: cardElement,
+   // stripe.createPaymentMethod({
+     // type: "card",
+    //  card: cardElement,
     // });
 
     // // or confirmCardPayment - https://stripe.com/docs/js/payment_intents/confirm_card_payment
@@ -73,10 +76,12 @@ function CheckoutForm() {
   }
 
   return (
+    <>
     <div className="paper">
+    <h1 style={{textAlign:"center"}}>Checkout</h1>
       <h5>Your information:</h5>
       <hr />
-      <FormGroup style={{ display: "flex" }}>
+      <FormGroup style={{ display: "flex"}}>
         <div style={{ flex: "0.90", marginRight: 10 }}>
           <Label>Address</Label>
           <Input name="address" onChange={onChange} />
@@ -102,11 +107,11 @@ function CheckoutForm() {
             box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
               0px 1px 1px 0px rgba(0, 0, 0, 0.14),
               0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-            height: 550px;
+            height: 620px;
             padding: 30px;
             background: #fff;
             border-radius: 6px;
-            margin-top: 90px;
+            margin-top: 40px;
           }
           .form-half {
             flex: 0.5;
@@ -149,13 +154,14 @@ function CheckoutForm() {
             padding: 0 14px;
             box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11),
               0 1px 3px rgba(0, 0, 0, 0.08);
-            color: #fff;
+              color: #fff;
             border-radius: 4px;
             font-size: 15px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.025em;
-            background-color: #6772e5;
+            background-color:#54B4D3;
+      
             text-decoration: none;
             -webkit-transition: all 150ms ease;
             transition: all 150ms ease;
@@ -169,7 +175,8 @@ function CheckoutForm() {
           button:hover {
             color: #fff;
             cursor: pointer;
-            background-color: #7795f8;
+            background-color:#0097a7;
+        
             transform: translateY(-1px);
             box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1),
               0 3px 6px rgba(0, 0, 0, 0.08);
@@ -207,6 +214,7 @@ function CheckoutForm() {
         `}
       </style>
     </div>
+    </>
   );
 }
 export default CheckoutForm;

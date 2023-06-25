@@ -4,10 +4,10 @@ import AppContext from "../components/context";
 import Home from "./index"
 import Layout from "../components/layout"
 import Cookie from "js-cookie"
-
+import "./Styles.css"
 
 function MyApp(props){
-  var {cart,addItem,removeItem, user, setUser} = useContext(AppContext)
+  var {cart,addItem,removeItem,  setUser} = useContext(AppContext)
   const [state,setState] = useState({cart:cart});
   const { Component, pageProps } = props;
   

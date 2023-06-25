@@ -1,8 +1,9 @@
 import {useRouter} from "next/router"
 import {gql,useQuery} from '@apollo/client';
 import {useState, useContext} from 'react'
-import Cart from "../components/cart"
+import Cart from "./cart"
 import AppContext from "./context"
+import AnchorLink from "react-anchor-link-smooth-scroll";
 import {
   Button,
   Card,
@@ -50,11 +51,12 @@ const GET_RESTAURANT_DISHES = gql`
 
     return (
       <>
+   
       <h1 style={{marginTop: "20px",marginRight: "10px", fontFamily: 'georgia'}}>{restaurant.name}</h1><h1 style={{marginTop: "20px", fontFamily: "times-italic"}}> ~ Specials</h1>
         <Row>
           {restaurant.dishes.map((res) => (
-            <Col xs="6" sm="4" style={{ padding: 0 }} key={res.id}>
-              <Card style={{ margin: "0 10px 30px", width: "300px", minHeight: "480px" }}>
+            <Col xs="6" sm="4" style={{ marginTop: "2rem"}} key={res.id}>
+              <Card className="cards" style={{maxWidth: "300px"}} >
                 <CardImg
                   top={true}
                   style={{ height: 200 }}
@@ -65,23 +67,25 @@ const GET_RESTAURANT_DISHES = gql`
                   <CardText>{res.description}</CardText>
                  <CardText>${res.price}</CardText>
                 </CardBody>
-                <div className="card-footer">
-                  <Button color="info"
+                <div  className="card-footer">
+                <AnchorLink href='#cart'><Button color="info"
                     outline
-                    color="primary"
+                   
                     onClick = {()=> addItem(res)}
                   >
                     + Add To Cart
                   </Button>
-                  
+                  </AnchorLink>
                 </div>
               </Card>
+              
             </Col>
 
              
           
           ))}
-          <Col>
+             
+          <Col id="cart">
              <Cart> </Cart>
              </Col>
             </Row>

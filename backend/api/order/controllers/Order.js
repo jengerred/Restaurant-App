@@ -7,7 +7,7 @@
 // note that this needs to be a "private" key from STRIPE
 const stripe = require("stripe")(
     // Enter your private key for test environment of STRIPE here
-  "sk_test_51NIwYcDmUeg0Tz3H36ovSs2X950mOMBdzEq4FYhO2S7FQiJilHF9pyF5SjEdAHrTUFwDeNuGd4lyYqQe8juOVIhP00boz3EkX8"
+  "sk_test_51NIwYcDmUeg0Tz3HenT60hpXn2yRzc7Cxx09898MZv8CoDxx2G1VplFCSTliNPxx0BgVRHjOxmEVl0NrA5sIStTG00CmQzfCdD"
 
  );
 module.exports = {
@@ -28,12 +28,13 @@ module.exports = {
       // Transform cents to dollars.
       amount: stripeAmount,
       currency: 'usd',
+      mode: 'payment',
       payment_method: 'pm_card_visa',
       description: `Order ${new Date()} by ${ctx.state.user._id}`,
       source: token,
     });
 
-
+   
 
     // Register the order in the database
     const order = await strapi.services.order.create({
@@ -51,4 +52,5 @@ module.exports = {
     return order;
   },
 };
+
 
