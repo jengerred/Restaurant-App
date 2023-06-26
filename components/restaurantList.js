@@ -96,6 +96,7 @@ if(searchQuery.length > 0){
     {renderDishes(restaurantID)}
     </Row>
 
+    
   
     </Container>
     

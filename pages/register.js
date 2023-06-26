@@ -9,6 +9,7 @@ import {
   FormGroup,
   Label,
   Input,
+  CardTitle,
 } from "reactstrap";
 import { registerUser } from "../components/auth";
 import AppContext from "../components/context";
@@ -24,7 +25,9 @@ const Register = () => {
         <Col sm="12" md={{ size: 5, offset: 3 }}>
           <div className="paper">
             <div className="header">
-              <img src="http://localhost:1337/uploads/5a60a9d26a764e7cba1099d8b157b5e9.png" />
+             <CardTitle><h1 className="card-title" style={{color:"white", textAlign:"center", paddingTop: "20px"}}>SIGN UP</h1></CardTitle>
+  
+         
             </div>
             <section className="wrapper">
               {Object.entries(error).length !== 0 &&
@@ -146,6 +149,7 @@ const Register = () => {
           img {
             margin: 15px 30px 10px 50px;
           }
+         
         `}
       </style>
     </Container>

@@ -9,6 +9,7 @@ import {
   FormGroup,
   Label,
   Input,
+  CardTitle,
 } from "reactstrap";
 import { login } from "../components/auth";
 import AppContext from "../components/context";
@@ -21,7 +22,6 @@ function Login(props) {
   const router = useRouter();
   const appContext = useContext(AppContext);
 
- 
   useEffect(() => {
     if (appContext.isAuthenticated) {
       router.push("/"); // redirect if you're already logged in
@@ -40,7 +40,7 @@ function Login(props) {
         <Col sm="12" md={{ size: 5, offset: 3 }}>
           <div className="paper">
             <div className="header">
-              <img src="http://localhost:1337/uploads/5a60a9d26a764e7cba1099d8b157b5e9.png" />
+            <CardTitle><h1 className="card-title" style={{color:"white", textAlign:"center", paddingTop: "20px"}}>SIGN IN</h1></CardTitle>
             </div>
             <section className="wrapper">
               {Object.entries(error).length !== 0 &&
@@ -96,6 +96,7 @@ function Login(props) {
                             appContext.setUser(res.data.user);
                             appContext.user(true);
                             appContext.isAuthenticated(true);
+                       
                           })
                           .catch((error) => {
                              //setError();

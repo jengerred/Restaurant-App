@@ -6,10 +6,8 @@
  */
 // note that this needs to be a "private" key from STRIPE
 const stripe = require("stripe")(
-    // Enter your private key for test environment of STRIPE here
   "sk_test_51NIwYcDmUeg0Tz3HenT60hpXn2yRzc7Cxx09898MZv8CoDxx2G1VplFCSTliNPxx0BgVRHjOxmEVl0NrA5sIStTG00CmQzfCdD"
-
- );
+);
 module.exports = {
   /**
    * Create a/an order record.
@@ -17,7 +15,6 @@ module.exports = {
    * @return {Object}
    */
 
- 
   create: async (ctx) => {
     const { address, amount, dishes, token, city, state } = JSON.parse(
       ctx.request.body
@@ -27,14 +24,10 @@ module.exports = {
     const charge = await stripe.charges.create({
       // Transform cents to dollars.
       amount: stripeAmount,
-      currency: 'usd',
-      mode: 'payment',
-      payment_method: 'pm_card_visa',
+      currency: "usd",
       description: `Order ${new Date()} by ${ctx.state.user._id}`,
       source: token,
     });
-
-   
 
     // Register the order in the database
     const order = await strapi.services.order.create({
@@ -45,10 +38,8 @@ module.exports = {
       dishes,
       city,
       state,
- 
-
- 
     });
+
     return order;
   },
 };
