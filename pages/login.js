@@ -83,6 +83,7 @@ function Login(props) {
                         <small>Forgot Password?</small>
                       </a>
                     </span>
+
                     <Button
                       style={{ float: "right", width: 120 }}
                       color="primary"
@@ -97,8 +98,8 @@ function Login(props) {
                             appContext.isAuthenticated(true);
                           })
                           .catch((error) => {
-                            setError();
-                            // setError("Incorrect email or password");
+                             //setError();
+                             //setError("");
                             setLoading(false);
                           });
                       }}

@@ -16,7 +16,7 @@ import AppContext from "../components/context";
 const Register = () => {
   const [data, setData] = useState({ email: "", username: "", password: "" });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState();
+  const [error, setError] = useState(false);
   const appContext = useContext(AppContext);
   return (
     <Container>

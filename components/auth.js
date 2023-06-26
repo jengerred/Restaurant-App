@@ -22,6 +22,7 @@ export const registerUser = (username, email, password) => {
 
         //resolve the promise to set loading to false in SignUp form
         resolve(res);
+        alert("Thanks for signing up!")
         //redirect back to home page for restaurance selection
         Router.push("/");
       })
@@ -52,6 +53,7 @@ export const login = (identifier, password) => {
       })
       .catch((error) => {
         //reject the promise and pass the error object back to the form
+        alert("Incorrect username and/or password")
         reject(error);
       });
   });

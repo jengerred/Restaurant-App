@@ -9,12 +9,14 @@ import AppContext from "./context";
 
 const Layout = (props) => {
   const title = "Welcome to Nextjs";
-const {user} = useContext(AppContext);
-
+//const {user} = useContext(AppContext);
+const {user, isAuthenticated, setIsAuthenticated, setRestaurant, setCart} = useContext(AppContext);
+console.log(`User: ${user}`);
+console.log(`Is authenticated: ${isAuthenticated}`);
 
 /*
 const logout = () => {
-  setUser(false);
+  setUser(null);
   setIsAuthenticated(false);
 }
 
@@ -55,7 +57,7 @@ const logout = () => {
 
           <NavItem className="ml-auto">
             {user ? (
-              <h5>({user.username})</h5>
+              <h5 style={{marginRight:"10px"}}>Hello, { user.username}</h5>
             ) : (
               <Link href="/register">
                 <a className="nav-link"> Sign up</a>
@@ -64,20 +66,22 @@ const logout = () => {
           </NavItem>
           <NavItem>
             {user ? (
-              <Link href="/">
+              <Link  href="/">
                 <a
-                  className="nav-link"
+            
+                className="nav-link"
                   onClick={() => {
-                    logout();
+                   // logout();
                     setUser(null);
+                     setIsAuthenticated(false);
                   }}
                 >
                   Logout
                 </a>
               </Link>
             ) : (
-              <Link href="/login">
-                <a className="nav-link">Sign in</a>
+              <Link  href="/login">
+                <a  className="nav-link">Sign in</a>
               </Link>
             )}
           </NavItem>

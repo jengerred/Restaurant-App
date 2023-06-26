@@ -7,6 +7,9 @@ import CardSection from "./cardSection";
 import AppContext from "./context";
 import Cookies from "js-cookie";
 
+
+
+
 function CheckoutForm() {
   const [data, setData] = useState({
     address: "",
@@ -53,10 +56,13 @@ function CheckoutForm() {
         token: token.token.id,
       
       }),
+     
     });
-
+    alert("Thank you! Your order has been processed....but not really because stripe is only in test mode");
+   
     if (!response.ok) {
       setError(response.statusText);
+   
       console.log("SUCCESS")
     }
 

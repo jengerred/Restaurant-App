@@ -2,58 +2,27 @@ import React from "react";
 import { createContext } from "react";
 
 const AppContext = createContext(
-    {isAuthenticated:false, 
+    {
+        isAuthenticated:false, 
+
         cart: {
             items:[], 
             total:0},
 
-        addItem:()=>{},
-        removeItem:()=>{},
+            addItem:()=>{},
+            removeItem:()=>{},
 
         user:false, 
         setUser:()=>{},
     });
 
     export default AppContext;
-
-/* /context/AppContext.js */
-/*
-import React from "react";
-// create auth context with default value
-
-// set backup default for isAuthenticated if none is provided in Provider
-const AppContext = React.createContext(
-    {isAuthenticated:true, 
-        cart: {items:[], 
-        total:0},
-        addItem:()=>{},
-        removeItem:()=>{},
-        user:false, 
-        setUser:()=>{}
-    });
-  
-export default AppContext;
-*/
-// /* /context/AppContext.js */
-
-// import React from "react";
-// // create auth context with default value
-
-// // set backup default for isAuthenticated if none is provided in Provider
-// const AppContext = React.createContext({
-//   isAuthenticated: true,
-//   cart: { items: [], total: 0 },
-//   addItem: () => {},
-//   removeItem: () => {},
-//   user: false,
-//   setUser: () => {},
-// });
-// export default AppContext;
-
+    
 
 
 
 /*
+
 import { createContext, useState } from "react";
 
 export const AppContext = createContext({});
@@ -168,20 +137,3 @@ export default AppContext;
 */
 
 
-/* /context/AppContext.js */
-/*
-import React from "react";
-// create auth context with default value
-
-// set backup default for isAuthenticated if none is provided in Provider
-const AppContext = React.createContext(
-    {isAuthenticated:true, 
-        cart: {items:[], 
-        total:0},
-        addItem:()=>{},
-        removeItem:()=>{},
-        user:false, 
-        setUser:()=>{}
-    });
-export default AppContext;
-*/

@@ -7,14 +7,19 @@ import Cookie from "js-cookie"
 import "./Styles.css"
 
 function MyApp(props){
-  var {cart,addItem,removeItem,  setUser} = useContext(AppContext)
+  //var {cart,addItem,removeItem, user, setUser} = useContext(AppContext);
+  var {cart, addItem, removeItem} = useContext(AppContext);
+  const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [restaurant, setRestaurant] = useState(0);
   const [state,setState] = useState({cart:cart});
   const { Component, pageProps } = props;
   
-  
+  /*
   setUser = (user) => {
     setState({ user });
   };
+  */
   addItem = (item) => {
     let { items } = state.cart;
     //check for item already in cart
@@ -83,8 +88,10 @@ function MyApp(props){
   }
 
   return (
-    <AppContext.Provider value={{cart: state.cart, addItem: addItem, removeItem: removeItem,isAuthenticated:false,user:null,setUser:()=>{}}}>
-      <Head>
+
+   // <AppContext.Provider value={{cart: state.cart, addItem: addItem, removeItem: removeItem,isAuthenticated:false,user:null,setUser:()=>{}}}>
+          <AppContext.Provider value={{cart: state.cart, addItem, removeItem, isAuthenticated, setIsAuthenticated, user, setUser, restaurant, setRestaurant}}>
+     <Head>
         <link
           rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -104,3 +111,7 @@ function MyApp(props){
 
 
 export default MyApp;
+
+/*
+    <AppContext.Provider value={{cart: state.cart, addItem: addItem, removeItem: removeItem,isAuthenticated:false,user:null,setUser:()=>{}}}>
+    */

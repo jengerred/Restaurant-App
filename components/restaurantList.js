@@ -92,13 +92,11 @@ if(searchQuery.length > 0){
   <br/><br/>
 
 
-    <Row  xs='3' style={{marginTop: "1rem"}}>
+    <Row id="dishes" xs='3' style={{marginTop: "1rem"}}>
     {renderDishes(restaurantID)}
     </Row>
 
-    <Row id="dishes">
-    <Link href="/menu">Menu</Link>
-    </Row>
+  
     </Container>
     
   )
